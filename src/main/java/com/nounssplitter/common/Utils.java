@@ -1,7 +1,6 @@
 package com.nounssplitter.common;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Scanner;
@@ -19,25 +18,19 @@ public class Utils {
             System.out.println("Loading german dictionary...");
 
             dictionary = new LinkedHashSet<String>();
+            InputStream dictionaryInputStream = Thread.currentThread()
+                .getContextClassLoader()
+                .getResourceAsStream("dictionaries/german-common-nouns.txt");
 
-            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-            File dictionaryFile = new File(classLoader
-                    .getResource("dictionaries/german-common-nouns.txt")
-                    .getFile()
-            );
-
-            try {
-                Scanner scanner = new Scanner(dictionaryFile);
-                while (scanner.hasNextLine()) {
-                    String line = scanner.nextLine();
-                    dictionary.add(line);
-                }
-                scanner.close();
-                dictionaryLoaded = dictionary;
-                System.out.println("German dictionary loaded!");
-            } catch (IOException e) {
-                e.printStackTrace();
+            Scanner scanner = new Scanner(dictionaryInputStream);
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                dictionary.add(line);
             }
+            scanner.close();
+            dictionaryLoaded = dictionary;
+            System.out.println("German dictionary loaded!");
+
         } else {
             dictionary = dictionaryLoaded;
         }
