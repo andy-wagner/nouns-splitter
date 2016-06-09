@@ -2,6 +2,8 @@ package com.nounssplitter.client;
 
 import java.util.Scanner;
 
+import com.nounssplitter.common.NounsHandler;
+
 public class UIManager {
 
     public static void start() {
@@ -24,12 +26,13 @@ public class UIManager {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Type the compound noun> ");
         String userInput = scanner.nextLine();
-        scanner.close();
 
         try {
-//            FileHandler.process(filename);
-        } catch (Exception e) {
+            NounsHandler.process(userInput, scanner);
+        } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
+        } finally {
+            scanner.close();
         }
     }
 
