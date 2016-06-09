@@ -1014,7 +1014,7 @@ dämpfungs
 dach
 damen
 damm
-/dampf
+dampf
 dampfer
 dampfschiff
 dank
