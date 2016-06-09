@@ -26,7 +26,8 @@ public class Utils {
                     .getFile()
             );
 
-            try (Scanner scanner = new Scanner(dictionaryFile)) {
+            try {
+                Scanner scanner = new Scanner(dictionaryFile);
                 while (scanner.hasNextLine()) {
                     String line = scanner.nextLine();
                     dictionary.add(line);
