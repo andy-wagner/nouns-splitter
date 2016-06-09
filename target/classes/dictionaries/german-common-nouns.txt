@@ -1014,8 +1014,9 @@ dämpfungs
 dach
 damen
 damm
-dampf
+/dampf
 dampfer
+dampfschiff
 dank
 dankes
 darbietungs
@@ -2056,6 +2057,7 @@ kantinen
 kanzlei
 kanzler
 kapazitäts
+kapitän
 kapitäns
 kapital
 karamell
